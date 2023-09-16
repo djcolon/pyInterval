@@ -1,0 +1,57 @@
+settings:
+  # How long to crossfade between segments (ms)
+  crossfade:  500
+  output_dir: "output"
+# Defines source files.
+source:
+  walk:
+  - "data/Late Night Radio.mp3"
+  - "data/Study And Relax.mp3"
+  run:
+  - "data/Split In Synapse.mp3"
+  - "data/Surf Shimmy.mp3"
+  - "data/Theme for Harold var 3.mp3"
+# Defines output mp3s.
+output:
+  # Will output w1d1.mp3 compiled of the below sections.
+  w1d1:
+    # Warm up
+    - duration: 300
+      source: walk
+    # Interval
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 60
+      source: run
+    - duration: 90
+      source: walk
+    # Cooldown
+    - duration: 300
+      source: walk
+    
