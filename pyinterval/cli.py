@@ -171,7 +171,7 @@ def main():
       logging.error(f"Failed to generate output {key} with error: '{e}'. Terminating...")
       exit(1)
     output_path = os.path.join(config['settings']['output_dir'], f"{key}.mp3")
-    logging.info(f"Saving audio segment for output {key} to '{output_path}'.")
+    logging.info(f"Saving audio segment for output {key} to '{output_path}'. This may take a while...")
     output_segment.export(output_path, format="mp3")
 
 if __name__ == '__main__':
