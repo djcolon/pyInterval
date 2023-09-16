@@ -49,6 +49,8 @@ All mp3 files used in the samples come from
 
 Excepting three_beeps which is by [Joseph Sardin](https://bigsoundbank.com/sound-2645-dial-tone-call-ends.html)
 
+Example c25k timings taken from [Tom Benninger](https://www.reddit.com/r/C25K/comments/kr5va/visual_c25k/)
+
 ## Usage
 
 ```sh
