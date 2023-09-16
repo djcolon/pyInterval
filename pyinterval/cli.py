@@ -179,8 +179,9 @@ def generate_output_audio_segment(output_definition: list, sources: dict, crossf
       end_position = segment['duration'] - (segment_source.duration_seconds - end_position)
     # Then append...
     result = result.append(segment_source[start_position*1000:end_position*1000], segment_crossfade)
+    # And remember where we are.
+    source_position[segment['source']] = end_position
   return result
-
 
 def main():
   """Main function."""
