@@ -123,6 +123,32 @@ def load_sources(source_config: dict, crossfade: int) -> dict:
     sources[key] = source
   return sources
 
+def check_durations(config: dict, sources: dict):
+  """
+  Makes sure the longest section isn;t longer that the total sources (as this
+  is currently unsupported.) Exits with an error if sources are too short.
+  """
+  logging.info("Checking sources have sufficient duration for defined section.")
+  found_issue = False
+  # First find the longest section for each source.
+  longest_segment = {}
+  for key in config['output']:
+    for section in config['output'][key]:
+      source = section['source']
+      duration = section['duration']
+      if source not in longest_segment or longest_segment[source] < duration:
+        longest_segment[source] = duration
+  # then compare them.
+  for key in longest_segment:
+    source_duration = math.floor(sources[key].duration_seconds)
+    if longest_segment[key] > source_duration:
+      found_issue = True
+      logging.error(f"Source {key} has a total duration of {source_duration}s, less than the longest section for that source at {longest_segment[key]}s.")
+  # Final message.
+  if found_issue:
+    logging.error("Please ensure your sources are long enough, as the program currently doesn't support looping in a segment. You can repeat files multiple times in a source definition as a work-around.")
+    exit(1)
+
 def generate_output_audio_segment(output_definition: list, sources: dict, crossfade: 100) -> AudioSegment:
   """
   Generates an AudioSegment from the input definition and source files.
@@ -165,6 +191,8 @@ def main():
   config = load_config("config.yml")
   # Load the sources.
   sources = load_sources(config['source'], config['settings']['crossfade'])
+  # Make sure our sources are long enough.
+  check_durations(config, sources)
   # Then generate outputs.
   for key in config['output']:
     logging.info(f"Generating audio segment for output {key}.")
@@ -177,6 +205,6 @@ def main():
     output_path = os.path.join(config['settings']['output_dir'], f"{key}.mp3")
     logging.info(f"Saving audio segment for output {key} to '{output_path}'. This may take a while...")
     output_segment.export(output_path, format="mp3")
-
+check_durations
 if __name__ == '__main__':
   main()
