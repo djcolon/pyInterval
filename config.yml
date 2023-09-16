@@ -11,13 +11,18 @@ source:
   - "data/Split In Synapse.mp3"
   - "data/Surf Shimmy.mp3"
   - "data/Theme for Harold var 3.mp3"
+  beeps:
+  - "data/three_beeps.mp3"
 # Defines output mp3s.
 output:
-  # Will output w1d1.mp3 compiled of the below sections.
-  w1d1:
+  # Will output w1.mp3 compiled of the below sections.
+  # Note duration is in seconds.
+  w1:
     # Warm up
     - duration: 300
       source: walk
+    - duration: 1
+      source: beeps
     # Interval
     - duration: 60
       source: run
@@ -49,9 +54,252 @@ output:
       source: walk
     - duration: 60
       source: run
-    - duration: 90
-      source: walk
     # Cooldown
+    - duration: 1
+      source: beeps
     - duration: 300
       source: walk
-    
+  # Week 2
+  w2:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 90
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 90
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 90
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 90
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 90
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 90
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 3
+  w3:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 90
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 180
+      source: run
+    - duration: 180
+      source: walk
+    - duration: 90
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 180
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 4
+  w4:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 180
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 300
+      source: run
+    - duration: 150
+      source: walk
+    - duration: 180
+      source: run
+    - duration: 90
+      source: walk
+    - duration: 300
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 5
+  w5d1:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 300
+      source: run
+    - duration: 180
+      source: walk
+    - duration: 300
+      source: run
+    - duration: 180
+      source: walk
+    - duration: 300
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  w5d2:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 480
+      source: run
+    - duration: 300
+      source: walk
+    - duration: 480
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  w5d3:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 1200
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 6
+  w6d1:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 300
+      source: run
+    - duration: 180
+      source: walk
+    - duration: 480
+      source: run
+    - duration: 120
+      source: walk
+    - duration: 300
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  w6d2:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 600
+      source: run
+    - duration: 180
+      source: walk
+    - duration: 600
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  w6d3:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 1500
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 7
+  w7:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 1500
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 8
+  w8:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 1680
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk
+  # Week 9
+  w9:
+    # Warm up
+    - duration: 300
+      source: walk
+    - duration: 1
+      source: beeps
+    # Interval
+    - duration: 1800
+      source: run
+    # Cooldown
+    - duration: 1
+      source: beeps
+    - duration: 300
+      source: walk

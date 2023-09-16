@@ -102,7 +102,7 @@ def load_mp3(path: str) -> AudioSegment:
     exit(1)
   return segment
 
-def load_sources(source_config: dict) -> dict:
+def load_sources(source_config: dict, crossfade: int) -> dict:
   """
   Loads the defined sources, concatenates all mp3s defined into a single
   AudioSegment and returns a dict of {source_name: AudioSegment}.
@@ -116,7 +116,10 @@ def load_sources(source_config: dict) -> dict:
     source = AudioSegment.empty()
     for source_file_path in source_config[key]:
       logging.info(f"Adding '{source_file_path}' to source {key}.")
-      source = source + load_mp3(source_file_path)
+      # Add a crossfade.
+      if crossfade > source.duration_seconds * 1000:
+        segment_crossfade = math.floor(source.duration_seconds * 1000)
+      source = source.append(load_mp3(source_file_path), segment_crossfade)
     sources[key] = source
   return sources
 
@@ -161,15 +164,16 @@ def main():
   # Get the config.
   config = load_config("config.yml")
   # Load the sources.
-  sources = load_sources(config['source'])
+  sources = load_sources(config['source'], config['settings']['crossfade'])
   # Then generate outputs.
   for key in config['output']:
     logging.info(f"Generating audio segment for output {key}.")
     try:
-      output_segment = generate_output_audio_segment(config['output'][key], sources, 100)
+      output_segment = generate_output_audio_segment(config['output'][key], sources, config['settings']['crossfade'])
     except Exception as e:
       logging.error(f"Failed to generate output {key} with error: '{e}'. Terminating...")
       exit(1)
+    # And save it.
     output_path = os.path.join(config['settings']['output_dir'], f"{key}.mp3")
     logging.info(f"Saving audio segment for output {key} to '{output_path}'. This may take a while...")
     output_segment.export(output_path, format="mp3")

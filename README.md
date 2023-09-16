@@ -47,6 +47,8 @@ The program relies heavily on [pydub](https://github.com/jiaaro/pydub).
 All mp3 files used in the samples come from
 [incompetech](https://incompetech.com/).
 
+Excepting three_beeps which is by [Joseph Sardin](https://bigsoundbank.com/sound-2645-dial-tone-call-ends.html)
+
 ## Usage
 
 ```sh
